@@ -1,0 +1,19 @@
+package com.CTS.serviceBookingManagement.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+
+import com.CTS.serviceBookingManagement.model.JwtResponse;
+
+
+
+
+@FeignClient(name="authorization-service",url="http://localhost:9192")
+public interface AuthClient {
+
+		@GetMapping("/validate")
+		public JwtResponse getValidity(@RequestHeader("Authorization") final String token) ;
+					
+		
+}
